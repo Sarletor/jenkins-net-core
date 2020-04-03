@@ -77,7 +77,7 @@ After that all ready to create new jenkins job.
   7.1 Execute Shell (Linux)
   7.2 Execute Windows batch command (Windows)
   
-  Then paste this script:
+  Then paste this script (with replacing needed paths and options): 
   ```
   cd src/WebSite/ClientApp
   npm install --registry https://npm.entrypoint.lv
