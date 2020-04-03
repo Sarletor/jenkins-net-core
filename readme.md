@@ -76,6 +76,7 @@ After that all ready to create new jenkins job.
 7. In 'Build' section you need to add new step:
 
 Execute Shell (Linux)
+
 Execute Windows batch command (Windows)
   
 Then paste this script (with replacing needed paths and options): 
