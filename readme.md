@@ -73,7 +73,9 @@ After that all ready to create new jenkins job.
 4. In 'Source Code Management' section you need to select git repository and write branch name
 5. In 'Build Triggers' section you need to check 'Build when a change is pushed to BitBucket' option
 6. In 'Build Environment' section you need to select NodeJS version. Other options don't change
-7. In 'Build' section you need to add new step:
+7. In 'Build' section you need to add new steps:
+
+Execute NodeJS script (with installation)
 
 Execute Shell (Linux)
 
