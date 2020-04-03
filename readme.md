@@ -33,6 +33,7 @@ Then add following entry in your /etc/apt/sources.list
 deb https://pkg.jenkins.io/debian-stable binary/
 ```
 
+Then finally install Jenkins:
 ```
 sudo apt-get update
 sudo apt-get install jenkins
