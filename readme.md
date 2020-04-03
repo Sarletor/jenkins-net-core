@@ -91,4 +91,4 @@ After that all ready to create new jenkins job.
   sudo systemctl start kestrel-starter.com.service
   ```
   
-8. For automated build you need to create webhook in your bitbucket repository on (localhost:8080/bitbucket-hook/)
+8. For automated build you need to create webhook in your bitbucket repository with URL: localhost:8080/bitbucket-hook/
