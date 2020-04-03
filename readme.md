@@ -74,21 +74,22 @@ After that all ready to create new jenkins job.
 5. In 'Build Triggers' section you need to check 'Build when a change is pushed to BitBucket' option
 6. In 'Build Environment' section you need to select NodeJS version. Other options don't change
 7. In 'Build' section you need to add new step:
-  7.1 Execute Shell (Linux)
-  7.2 Execute Windows batch command (Windows)
+
+Execute Shell (Linux)
+Execute Windows batch command (Windows)
   
-  Then paste this script (with replacing needed paths and options): 
-  ```
-  cd src/WebSite/ClientApp
-  npm install --registry https://npm.entrypoint.lv
-  cd ../../Website.Tests
-  dotnet test -v=normal
-  cd ../../
-  sudo systemctl stop kestrel-starter.com.service
-  dotnet publish --configuration release
-  cd ~
-  rsync -r /var/lib/jenkins/workspace/Stage/src/WebSite/bin/Release/netcoreapp3.0/publish/ /var/aspnet/starter.com
-  sudo systemctl start kestrel-starter.com.service
-  ```
+Then paste this script (with replacing needed paths and options): 
+```
+cd src/WebSite/ClientApp
+npm install --registry https://npm.entrypoint.lv
+cd ../../Website.Tests
+dotnet test -v=normal
+cd ../../
+sudo systemctl stop kestrel-starter.com.service
+dotnet publish --configuration release
+cd ~
+rsync -r /var/lib/jenkins/workspace/Stage/src/WebSite/bin/Release/netcoreapp3.0/publish/ /var/aspnet/starter.com
+sudo systemctl start kestrel-starter.com.service
+```
   
 8. For automated build you need to create webhook in your bitbucket repository with jenkins URL: localhost:8080/bitbucket-hook/
