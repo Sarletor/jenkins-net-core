@@ -82,6 +82,9 @@ Execute Shell (Linux)
 Execute Windows batch command (Windows)
   
 Then paste this script (with replacing needed paths and options): 
+
+###### Linux (Ubuntu 16.04)
+
 ```
 cd src/WebSite/ClientApp
 npm install --registry https://npm.entrypoint.lv
@@ -93,6 +96,19 @@ dotnet publish --configuration release
 cd ~
 rsync -r /var/lib/jenkins/workspace/Stage/src/WebSite/bin/Release/netcoreapp3.0/publish/ /var/aspnet/starter.com
 sudo systemctl start kestrel-starter.com.service
+```
+
+###### Windows
+
+```
+cd src/WebSite/ClientApp
+npm install --registry https://npm.entrypoint.lv
+cd ../../Website.Tests
+dotnet test -v=normal
+cd ../../
+dotnet publish --configuration release
+cd 
+xcopy "C:\Program Files (x86)\Jenkins\workspace\stage\src\WebSite\bin\Release\netcoreapp3.0\publish" C:\inetpub\starter /K /D /H /Y
 ```
   
 8. For automated build you need to create webhook in your bitbucket repository with jenkins URL: localhost:8080/bitbucket-hook/
