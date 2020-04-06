@@ -7,7 +7,7 @@ Besides Jenkins you need to install Java 8 (11 available from jenkins 2.164). Al
 ###### Windows
 
 **Java**
-(https://www.oracle.com/java/technologies/javase-jre8-downloads.html)
+(https://java.com/ru/download/)
 
 **Jenkins**
 (http://mirrors.jenkins-ci.org/windows-stable/latest)
