@@ -94,7 +94,7 @@ cd ../../
 sudo systemctl stop kestrel-starter.com.service
 dotnet publish --configuration release
 cd ~
-rsync -r /var/lib/jenkins/workspace/Stage/src/WebSite/bin/Release/netcoreapp3.0/publish/ /var/aspnet/starter.com
+rsync -r /var/lib/jenkins/workspace/stage/src/WebSite/bin/Release/netcoreapp3.0/publish/ /var/aspnet/starter.com
 sudo systemctl start kestrel-starter.com.service
 ```
 
