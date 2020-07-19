@@ -112,3 +112,55 @@ xcopy "C:\Program Files (x86)\Jenkins\workspace\stage\src\WebSite\bin\Release\ne
 ```
   
 8. For automated build you need to create webhook in your bitbucket repository with jenkins URL: localhost:8080/bitbucket-hook/
+
+### Migrations
+
+Example logic for migrations applying you can see in 'unit-tests' branch of .NET Core starter project.
+There is instruction for starter project startup logic rewriting to have ability to apply migrations:
+
+1. First of all you need to add 'ApplyMigrations' option to appsettings.json and to AppSettings.cs
+```
+"AppSettings": {
+    "ApplyMigrations": false
+}
+```
+
+```
+public class AppSettings
+{
+    public bool ApplyMigrations { get; set; }
+}
+```
+2. You need to inject AppSettings and DataContext in Startup.cs
+
+```
+private readonly AppSettings appSettings;
+private readonly IDataContext dataContext;
+
+public Startup(IConfiguration configuration, IOptions<AppSettings> appSettings, IDataContext dataContext)
+{
+    Configuration = configuration;
+
+    this.appSettings = appSettings.Value;
+    this.dataContext = dataContext;
+}
+```
+
+3. Then you need to modify 'Configure' method and add a check for the need to apply migrations in production (if you need to have 'apply migrations' option in development you can modify configure method as you wish). By default migrations in development will only applied if no database exists.
+```
+if (env.IsDevelopment())
+{
+    // Create roles and admin user
+    defaultData.CreateIfNoDatabaseExists().Wait();
+
+    app.UseDeveloperExceptionPage();
+    app.UseDatabaseErrorPage();
+}
+else
+{
+    if (appSettings.ApplyMigrations)
+        dataContext.Database.Migrate();
+
+    app.UseExceptionHandler("/Home/Error");
+}
+```
