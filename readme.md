@@ -118,7 +118,7 @@ xcopy "C:\Program Files (x86)\Jenkins\workspace\stage\src\WebSite\bin\Release\ne
 Example logic for migrations applying you can see in 'unit-tests' branch of .NET Core starter project.
 There is instruction for starter project startup logic rewriting to have ability to apply migrations:
 
-1. First of all you need to add 'ApplyMigrations' option to appsettings.json and to AppSettings.cs
+1. First of all you need to add 'ApplyMigrations' option in appsettings.json and in AppSettings.cs
 ```
 "AppSettings": {
     "ApplyMigrations": false
